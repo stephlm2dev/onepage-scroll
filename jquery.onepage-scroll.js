@@ -9,6 +9,8 @@
  *
  * Credit: Eike Send for the awesome swipe event
  * https://github.com/peachananr/onepage-scroll
+ * 
+ * Fork by stephlm2dev for contact-manager project
  *
  * ========================================================== */
 
@@ -20,13 +22,13 @@
     animationTime: 1000,
     pagination: true,
     updateURL: false
-	};
-	
-	/*------------------------------------------------*/
-	/*  Credit: Eike Send for the awesome swipe event */    
-	/*------------------------------------------------*/
-	
-	$.fn.swipeEvents = function() {
+  };
+  
+  /*------------------------------------------------*/
+  /*  Credit: Eike Send for the awesome swipe event */    
+  /*------------------------------------------------*/
+  
+  $.fn.swipeEvents = function() {
       return this.each(function() {
 
         var startX,
@@ -69,10 +71,9 @@
           }
           event.preventDefault();
         }
-
       });
     };
-	
+  
 
   $.fn.onepage_scroll = function(options){
     var settings = $.extend({}, defaults, options),
@@ -111,8 +112,8 @@
             $(".onepage-pagination li a" + "[data-index='" + index + "']").removeClass("active");
             $(".onepage-pagination li a" + "[data-index='" + (index + 1) + "']").addClass("active");
           }
-          $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
-          $("body").addClass("viewing-page-"+next.data("index"))
+          $(".contact-list")[0].className = $(".contact-list")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
+          $(".contact-list").addClass("viewing-page-"+next.data("index"))
           
           if (history.replaceState && settings.updateURL == true) {
             var href = window.location.href.substr(0,window.location.href.indexOf('#')) + "#" + (index + 1);
@@ -138,8 +139,8 @@
             $(".onepage-pagination li a" + "[data-index='" + index + "']").removeClass("active");
             $(".onepage-pagination li a" + "[data-index='" + (index - 1) + "']").addClass("active");
           }
-          $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
-          $("body").addClass("viewing-page-"+next.data("index"))
+          $(".contact-list")[0].className = $(".contact-list")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
+          $(".contact-list").addClass("viewing-page-"+next.data("index"))
           
           if (history.replaceState && settings.updateURL == true) {
             var href = window.location.href.substr(0,window.location.href.indexOf('#')) + "#" + (index - 1);
@@ -190,7 +191,7 @@
     
     // Create Pagination and Display Them
     if(settings.pagination == true) {
-      $("<ul class='onepage-pagination'>" + paginationList + "</ul>").prependTo("body");
+      $("<ul class='onepage-pagination'>" + paginationList + "</ul>").prependTo(".contact-list");
       posTop = (el.find(".onepage-pagination").height() / 2) * -1;
       el.find(".onepage-pagination").css("margin-top", posTop);
     }
@@ -198,15 +199,15 @@
     if(window.location.hash != "" && window.location.hash != "#1") {
       init_index =  window.location.hash.replace("#", "")
       $(settings.sectionContainer + "[data-index='" + init_index + "']").addClass("active")
-      $("body").addClass("viewing-page-"+ init_index)
+      $(".contact-list").addClass("viewing-page-"+ init_index)
       if(settings.pagination == true) $(".onepage-pagination li a" + "[data-index='" + init_index + "']").addClass("active");
       
       next = $(settings.sectionContainer + "[data-index='" + (init_index) + "']");
       if(next) {
         next.addClass("active")
         if(settings.pagination == true) $(".onepage-pagination li a" + "[data-index='" + (init_index) + "']").addClass("active");
-        $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
-        $("body").addClass("viewing-page-"+next.data("index"))
+        $(".contact-list")[0].className = $(".contact-list")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
+        $(".contact-list").addClass("viewing-page-"+next.data("index"))
         if (history.replaceState && settings.updateURL == true) {
           var href = window.location.href.substr(0,window.location.href.indexOf('#')) + "#" + (init_index);
           history.pushState( {}, document.title, href );
@@ -217,7 +218,7 @@
       
     }else{
       $(settings.sectionContainer + "[data-index='1']").addClass("active")
-      $("body").addClass("viewing-page-1")
+      $(".contact-list").addClass("viewing-page-1")
       if(settings.pagination == true) $(".onepage-pagination li a" + "[data-index='1']").addClass("active");
     }
     if(settings.pagination == true)  {
@@ -231,8 +232,8 @@
             next.addClass("active")
             $(".onepage-pagination li a" + ".active").removeClass("active");
             $(".onepage-pagination li a" + "[data-index='" + (page_index) + "']").addClass("active");
-            $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
-            $("body").addClass("viewing-page-"+next.data("index"))
+            $(".contact-list")[0].className = $(".contact-list")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
+            $(".contact-list").addClass("viewing-page-"+next.data("index"))
           }
           pos = ((page_index - 1) * 100) * -1;
           el.transformPage(settings, pos);
@@ -253,5 +254,3 @@
   }
   
 }(window.jQuery);
-
-

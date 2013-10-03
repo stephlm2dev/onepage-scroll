@@ -1,3 +1,6 @@
+Edit this project for personnal use in Contact-Manager
+Personnalize the way to display the list of contact
+
 #One Page Scroll by Pete R.
 Create an Apple-like one page scroll website (iPhone 5S website) with One Page Scroll plugin
 Created by [Pete R.](http://www.thepetedesign.com), Founder of [BucketListly](http://www.bucketlistly.com)
